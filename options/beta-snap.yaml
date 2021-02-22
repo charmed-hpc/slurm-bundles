@@ -1,0 +1,16 @@
+applications:
+  slurmrestd:
+    options:
+      snapstore-channel: "--beta"
+  slurm-configurator:
+    options:
+      snapstore-channel: "--beta"
+  slurmctld:
+    options:
+      snapstore-channel: "--beta"
+  slurmd:
+    options:
+      snapstore-channel: "--beta"
+  slurmdbd:
+    options:
+      snapstore-channel: "--beta"
