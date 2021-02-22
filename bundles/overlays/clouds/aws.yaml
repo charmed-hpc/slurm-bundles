@@ -1,0 +1,54 @@
+applications:
+  percona-cluster:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      access: nat
+      cluster: nat
+      db: nat
+      db-admin: nat
+      ha: nat
+      master: nat
+      nrpe-external-master: nat
+      shared-db: nat
+      slave: nat
+  slurmrestd:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      slurmrestd: nat
+  slurm-configurator:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      elasticsearch: nat
+      grafana-source: nat
+      influxdb-api: nat
+      nhc: nat
+      prolog-epilog: nat
+      slurmctld: nat
+      slurmd: nat
+      slurmdbd: nat
+      slurmrestd: nat
+  slurmctld:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      nrpe-external-master: nat
+      slurmctld: nat
+      slurmctld-peer: nat
+  slurmd:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      nrpe-external-master: nat
+      slurmd: nat
+      slurmd-peer: nat
+  slurmdbd:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      db: nat
+      nrpe-external-master: nat
+      slurmdbd: nat
+      slurmdbd-peer: nat
