@@ -1,0 +1,11 @@
+applications:
+  slurmrestd:
+    series: focal
+  slurm-configurator:
+    series: focal
+  slurmctld:
+    series: focal
+  slurmd:
+    series: focal
+  slurmdbd:
+    series: focal

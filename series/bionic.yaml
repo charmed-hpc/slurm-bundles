@@ -1,0 +1,11 @@
+applications:
+  slurmrestd:
+    series: bionic
+  slurm-configurator:
+    series: bionic
+  slurmctld:
+    series: bionic
+  slurmd:
+    series: bionic
+  slurmdbd:
+    series: bionic
