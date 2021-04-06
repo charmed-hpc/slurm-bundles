@@ -1,6 +1,6 @@
 applications:
-  slurmrestd:
-    series: focal
+# slurmrestd:
+#   series: focal
   slurm-configurator:
     series: focal
   slurmctld:

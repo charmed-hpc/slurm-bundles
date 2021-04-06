@@ -1,6 +1,6 @@
 applications:
-  slurmrestd:
-    series: centos7
+# slurmrestd:
+#   series: centos7
   slurm-configurator:
     series: centos7
   slurmctld:
