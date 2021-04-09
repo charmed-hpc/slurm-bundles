@@ -1,0 +1,8 @@
+series: focal
+applications:
+  slurmrestd:
+    charm: ./../../slurm-charms/slurmrestd.charm
+    num_units: 1
+relations:
+  - - slurm-configurator:slurmrestd
+    - slurmrestd:slurmrestd

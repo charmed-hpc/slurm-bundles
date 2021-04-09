@@ -1,0 +1,6 @@
+applications:
+  slurmrestd:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      slurmrestd: nat
