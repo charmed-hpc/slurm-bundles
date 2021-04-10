@@ -1,4 +1,4 @@
-minVersion: "0.12.0"
+minVersion: "0.13.2"
 github:
   owner: omnivector-solutions
   repo: slurm-bundles
