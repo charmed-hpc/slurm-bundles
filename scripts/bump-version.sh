@@ -7,6 +7,6 @@ cd $SCRIPT_DIR/..
 OLD_VERSION="$1"
 NEW_VERSION="$2"
 
-sed -i -e "s/^__version__ = "'".*"'"\$/__version__ = "'"'"$NEW_VERSION"'"'"/" VERSION
+sed -i -e "s/^.*/$NEW_VERSION/" VERSION
 
 echo "New version: $NEW_VERSION"
