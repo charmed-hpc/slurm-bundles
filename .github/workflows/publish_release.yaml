@@ -40,5 +40,5 @@ jobs:
         run: |
           git fetch --all
           git checkout master
-          ./scripts/bump-version.sh '' "${RELEASE_VERSION}+dev"
+          ./scripts/bump-version.sh '' "${{ env.RELEASE_VERSION }}+dev"
           git diff --quiet || git commit -anm 'meta: Bump new development version' && git pull --rebase && git push
