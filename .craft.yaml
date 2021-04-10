@@ -1,0 +1,16 @@
+minVersion: "0.13.2"
+github:
+  owner: omnivector-solutions
+  repo: slurm-bundles
+releaseBranchPrefix: release
+changelog: CHANGELOG.md
+changelogPolicy: auto
+statusProvider:
+  name: github
+  config:
+    contexts:
+      - "ReleaseAction"
+artifactProvider:
+  name: github
+targets:
+  - name: github
