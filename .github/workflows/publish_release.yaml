@@ -29,8 +29,8 @@ jobs:
         name: "Craft Publish"
         with:
           action: publish
-          keep_branch: true
           version: ${{ env.RELEASE_VERSION }}
+          keep_branch: "--keep-branch"
         env:
           GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CRAFT_LOG_LEVEL: debug
