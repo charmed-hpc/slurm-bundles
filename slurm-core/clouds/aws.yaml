@@ -19,7 +19,6 @@ applications:
       elasticsearch: nat
       grafana-source: nat
       influxdb-api: nat
-      nhc: nat
       prolog-epilog: nat
       slurmctld: nat
       slurmd: nat
