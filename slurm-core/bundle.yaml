@@ -2,19 +2,16 @@ applications:
   slurmctld:
     charm: ./../../slurm-charms/slurmctld.charm
     num_units: 1
+    options:
+      custom-config: |
+        SlurmctldDebug=debug5
+        SlurmdDebug=debug5
   slurmd:
     charm: ./../../slurm-charms/slurmd.charm
     num_units: 1
   slurmdbd:
     charm: ./../../slurm-charms/slurmdbd.charm
     num_units: 1
-  slurm-configurator:
-    charm: ./../../slurm-charms/slurm-configurator.charm
-    num_units: 1
-    options:
-      custom_config: |
-        SlurmctldDebug=debug5
-        SlurmdDebug=debug5
   percona-cluster:
     charm: cs:percona-cluster-293
     series: bionic
@@ -22,9 +19,7 @@ applications:
 relations:
   - - slurmdbd:db
     - percona-cluster:db
-  - - slurm-configurator:slurmdbd
+  - - slurmctld:slurmdbd
     - slurmdbd:slurmdbd
-  - - slurm-configurator:slurmd
+  - - slurmctld:slurmd
     - slurmd:slurmd
-  - - slurm-configurator:slurmctld
-    - slurmctld:slurmctld

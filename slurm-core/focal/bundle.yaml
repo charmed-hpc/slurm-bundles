@@ -4,5 +4,5 @@ applications:
     charm: ./../../../slurm-charms/slurmrestd.charm
     num_units: 1
 relations:
-  - - slurm-configurator:slurmrestd
+  - - slurmctld:slurmrestd
     - slurmrestd:slurmrestd

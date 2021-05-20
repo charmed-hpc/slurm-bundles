@@ -1,4 +1,4 @@
 applications:
-  slurm-configurator:
+  slurmctld:
     options:
-      proctrack_type: proctrack/linuxproc
+      proctrack-type: proctrack/linuxproc

@@ -1,6 +1,5 @@
 clean: ## Remove all deployed applications
 	juju remove-application --force percona-cluster \
-	                                slurm-configurator \
 	                                slurmctld \
 	                                slurmd \
 	                                slurmdbd \

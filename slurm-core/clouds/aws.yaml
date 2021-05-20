@@ -9,33 +9,19 @@ applications:
       db-admin: nat
       ha: nat
       master: nat
-      nrpe-external-master: nat
       shared-db: nat
       slave: nat
-  slurm-configurator:
-    constraints: instance-type=t3.medium spaces=nat
-    bindings:
-      "": nat
-      elasticsearch: nat
-      grafana-source: nat
-      influxdb-api: nat
-      prolog-epilog: nat
-      slurmctld: nat
-      slurmd: nat
-      slurmdbd: nat
-      slurmrestd: nat
   slurmctld:
     constraints: instance-type=t3.medium spaces=nat
     bindings:
       "": nat
-      nrpe-external-master: nat
-      slurmctld: nat
+      slurmd: nat
+      slurmdbd: nat
       slurmctld-peer: nat
   slurmd:
     constraints: instance-type=t3.medium spaces=nat
     bindings:
       "": nat
-      nrpe-external-master: nat
       slurmd: nat
       slurmd-peer: nat
   slurmdbd:
@@ -43,6 +29,5 @@ applications:
     bindings:
       "": nat
       db: nat
-      nrpe-external-master: nat
       slurmdbd: nat
       slurmdbd-peer: nat
