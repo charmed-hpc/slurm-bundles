@@ -18,6 +18,7 @@ applications:
       slurmd: nat
       slurmdbd: nat
       slurmctld-peer: nat
+      slurmrestd: nat
   slurmd:
     constraints: instance-type=t3.medium spaces=nat
     bindings:
@@ -31,3 +32,8 @@ applications:
       db: nat
       slurmdbd: nat
       slurmdbd-peer: nat
+  slurmrestd:
+    constraints: instance-type=t3.medium spaces=nat
+    bindings:
+      "": nat
+      slurmrestd: nat

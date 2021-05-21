@@ -12,6 +12,9 @@ applications:
   slurmdbd:
     charm: ./../../slurm-charms/slurmdbd.charm
     num_units: 1
+  slurmrestd:
+    charm: ./../../slurm-charms/slurmrestd.charm
+    num_units: 1
   percona-cluster:
     charm: cs:percona-cluster-293
     series: bionic
@@ -23,3 +26,5 @@ relations:
     - slurmdbd:slurmdbd
   - - slurmctld:slurmd
     - slurmd:slurmd
+  - - slurmctld:slurmrestd
+    - slurmrestd:slurmrestd
