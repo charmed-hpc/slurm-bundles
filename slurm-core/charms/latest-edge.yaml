@@ -1,0 +1,9 @@
+applications:
+  slurmctld:
+    channel: latest/edge
+  slurmd:
+    channel: latest/edge
+  slurmdbd:
+    channel: latest/edge
+  slurmrestd:
+    channel: latest/edge

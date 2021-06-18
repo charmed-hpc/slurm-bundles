@@ -1,0 +1,9 @@
+applications:
+  slurmctld:
+    charm: ./../../../slurm-charms/slurmctld.charm
+  slurmd:
+    charm: ./../../../slurm-charms/slurmd.charm
+  slurmdbd:
+    charm: ./../../../slurm-charms/slurmdbd.charm
+  slurmrestd:
+    charm: ./../../../slurm-charms/slurmrestd.charm
