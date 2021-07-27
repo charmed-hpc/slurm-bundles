@@ -1,0 +1,21 @@
+applications:
+  prometheus2:
+    charm: prometheus2
+    num_units: 1
+    series: focal
+  node-exporter:
+    charm: prometheus-node-exporter
+    series: focal
+relations:
+  - - prometheus2:scrape
+    - node-exporter:prometheus
+  - - node-exporter:juju-info
+    - slurmd:juju-info
+  - - node-exporter:juju-info
+    - slurmctld:juju-info
+  - - node-exporter:juju-info
+    - slurmdbd:juju-info
+  - - node-exporter:juju-info
+    - slurmrestd:juju-info
+  - - node-exporter:juju-info
+    - percona-cluster:juju-info
