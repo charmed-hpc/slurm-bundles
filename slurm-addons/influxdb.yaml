@@ -4,5 +4,4 @@ applications:
     num_units: 1
     series: focal
 relations:
-  - - influxdb:query
-    - slurmctld:influxdb-api
+  - [influxdb:query, slurmctld:influxdb-api]

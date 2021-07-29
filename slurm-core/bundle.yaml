@@ -23,11 +23,7 @@ applications:
     series: bionic
     num_units: 1
 relations:
-  - - slurmdbd:db
-    - percona-cluster:db
-  - - slurmctld:slurmdbd
-    - slurmdbd:slurmdbd
-  - - slurmctld:slurmd
-    - slurmd:slurmd
-  - - slurmctld:slurmrestd
-    - slurmrestd:slurmrestd
+  - [slurmdbd:db, percona-cluster:db]
+  - [slurmctld:slurmdbd, slurmdbd:slurmdbd]
+  - [slurmctld:slurmd, slurmd:slurmd]
+  - [slurmctld:slurmrestd, slurmrestd:slurmrestd]

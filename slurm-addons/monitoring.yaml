@@ -7,15 +7,9 @@ applications:
     charm: prometheus-node-exporter
     series: focal
 relations:
-  - - prometheus2:scrape
-    - node-exporter:prometheus
-  - - node-exporter:juju-info
-    - slurmd:juju-info
-  - - node-exporter:juju-info
-    - slurmctld:juju-info
-  - - node-exporter:juju-info
-    - slurmdbd:juju-info
-  - - node-exporter:juju-info
-    - slurmrestd:juju-info
-  - - node-exporter:juju-info
-    - percona-cluster:juju-info
+  - [prometheus2:scrape, node-exporter:prometheus]
+  - [node-exporter:juju-info, slurmd:juju-info]
+  - [node-exporter:juju-info, slurmctld:juju-info]
+  - [node-exporter:juju-info, slurmdbd:juju-info]
+  - [node-exporter:juju-info, slurmrestd:juju-info]
+  - [node-exporter:juju-info, percona-cluster:juju-info]
