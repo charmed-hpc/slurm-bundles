@@ -1,6 +1,6 @@
 applications:
   percona-cluster:
-    constraints: instance-type=t3.medium spaces=nat
+    constraints: instance-type=t3a.small spaces=nat
     bindings:
       "": nat
       access: nat
@@ -12,7 +12,7 @@ applications:
       shared-db: nat
       slave: nat
   slurmctld:
-    constraints: instance-type=t3.medium spaces=nat
+    constraints: instance-type=t3a.small spaces=nat
     bindings:
       "": nat
       slurmd: nat
@@ -20,20 +20,20 @@ applications:
       slurmctld-peer: nat
       slurmrestd: nat
   slurmd:
-    constraints: instance-type=t3.medium spaces=nat
+    constraints: instance-type=t3a.small spaces=nat
     bindings:
       "": nat
       slurmd: nat
       slurmd-peer: nat
   slurmdbd:
-    constraints: instance-type=t3.medium spaces=nat
+    constraints: instance-type=t3a.small spaces=nat
     bindings:
       "": nat
       db: nat
       slurmdbd: nat
       slurmdbd-peer: nat
   slurmrestd:
-    constraints: instance-type=t3.medium spaces=nat
+    constraints: instance-type=t3a.small spaces=nat
     bindings:
       "": nat
       slurmrestd: nat
