@@ -1,6 +1,10 @@
 applications:
   slurmctld:
     charm: ./../../../slurm-charms/slurmctld.charm
+    options:
+      custom-config: |
+        SlurmctldDebug=debug5
+        SlurmdDebug=debug5
     resources:
       etcd: ./../etcd-v3.5.0-linux-amd64.tar.gz
   slurmd:
