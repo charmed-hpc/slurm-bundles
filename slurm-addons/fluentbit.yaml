@@ -1,0 +1,8 @@
+applications:
+  fluentbit:
+    charm: fluentbit
+    series: focal
+relations:
+  - [slurmctld:fluentbit, fluentbit:fluentbit]
+  - [slurmd:fluentbit, fluentbit:fluentbit]
+  - [slurmdbd:fluentbit, fluentbit:fluentbit]
