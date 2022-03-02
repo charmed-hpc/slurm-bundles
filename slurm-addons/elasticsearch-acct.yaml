@@ -1,0 +1,10 @@
+applications:
+  elasticsearch:
+    charm: elasticsearch
+    num_units: 1
+    series: focal
+    options:
+      apt-repository: "deb https://artifacts.elastic.co/packages/6.x/apt stable main"
+      firewall_enabled: false
+relations:
+  - [slurmctld:elasticsearch, elasticsearch:client]
