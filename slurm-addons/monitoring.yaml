@@ -6,10 +6,14 @@ applications:
   node-exporter:
     charm: prometheus-node-exporter
     series: focal
+  slurm-exporter:
+    charm: slurm-exporter
+    series: focal
 relations:
   - [prometheus2:scrape, node-exporter:prometheus]
+  - [prometheus2:scrape, slurm-exporter:prometheus]
   - [node-exporter:juju-info, slurmd:juju-info]
   - [node-exporter:juju-info, slurmctld:juju-info]
   - [node-exporter:juju-info, slurmdbd:juju-info]
   - [node-exporter:juju-info, slurmrestd:juju-info]
-  - [node-exporter:juju-info, percona-cluster:juju-info]
+  - [slurm-exporter:juju-info, slurmrestd:juju-info]
