@@ -1,5 +1,11 @@
-name: Omnivector Slurm Distribution
-description: OSD
+name: slurm
+description: A suite of codified operations to asssemble, install, deploy, and operate Slurm.
+website: https://omnivector-solutions.github.io/osd-documentation/master/
+docs: https://omnivector-solutions.github.io/osd-documentation/master/
+source: https://github.com/omnivector-solutions/slurm-bundles/
+issues: https://github.com/omnivector-solutions/slurm-charms/issues
+
+series: focal
 
 applications:
   slurmctld:
