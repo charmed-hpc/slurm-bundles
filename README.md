@@ -1,7 +1,7 @@
 # Omnivector Slurm Distribution Bundles
 
-A suite of codified operations to assemble, install, deploy, and operate
-Slurm.
+This suite provides a set of codified operations to assemble, install, deploy,
+and operate Slurm.
 
 ## Overview
 
@@ -16,12 +16,13 @@ involves running only a single command:
 $ juju deploy slurm
 ```
 
-This command will deploy and configure a Slurm cluster with:
-- 1 `slurmctld` node: the central management node
-- 1 `slurmdbd` node: the database accounting node
-- 1 `slurmd` node: the compute node
-- 1 `slurmrestd` node: the REST API interface to Slurm
-- 1 `percona-cluster` node: the MySQL database
+This command will deploy and configure a Slurm cluster with one of each of the
+following components:
+- `slurmctld` node: the central management node
+- `slurmdbd` node: the database accounting node
+- `slurmd` node: the compute node
+- `slurmrestd` node: the REST API interface to Slurm
+- `percona-cluster` node: the MySQL database
 
 ## Documentation
 
