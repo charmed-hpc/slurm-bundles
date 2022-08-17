@@ -12,7 +12,7 @@ clean: ## Remove all deployed applications
 ${ETCD}: ## Download etcd resource
 	wget https://github.com/etcd-io/etcd/releases/download/v3.5.0/${ETCD}
 
-${NHC}:
+${NHC}: ## Download NHC resource
 	wget https://github.com/mej/nhc/releases/download/1.4.3/${NHC}
 
 SINGULARITY_DEB=singularity-ce_3.10.2-focal_amd64.deb
