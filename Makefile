@@ -27,7 +27,7 @@ ${SINGULARITY_RPM}:
 singularity: ${SINGULARITY_DEB} ${SINGULARITY_RPM} ## Donwload singularity .deb and .rpm
 
 .PHONY: lxd-focal
-lxd-focal: ${ETCD} ${NHC} singularity ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
+lxd-focal: ${ETCD} singularity ${NHC}  ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/lxd.yaml \
 	            --overlay ./slurm-core/series/focal.yaml \
