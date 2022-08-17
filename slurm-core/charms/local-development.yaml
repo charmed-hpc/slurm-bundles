@@ -12,6 +12,7 @@ applications:
     resources:
       singularity-deb: ./../singularity-ce_3.10.2-focal_amd64.deb
       singularity-rpm: ./../singularity-ce-3.10.2-1.el7.x86_64.rpm
+      nhc: ./../lbnl-nhc-1.4.3.tar.gz
   slurmdbd:
     charm: ./../../../slurm-charms/slurmdbd.charm
   slurmrestd:

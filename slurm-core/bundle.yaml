@@ -14,8 +14,6 @@ applications:
   slurmd:
     charm: slurmd
     num_units: 1
-    resources:
-      nhc: ./../lbnl-nhc-1.4.3.tar.gz
   slurmdbd:
     charm: slurmdbd
     num_units: 1
