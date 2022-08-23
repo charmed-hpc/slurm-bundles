@@ -11,9 +11,16 @@ clean: ## Remove all deployed applications
 ${ETCD}: ## Download etcd resource
 	wget https://github.com/etcd-io/etcd/releases/download/v3.5.0/${ETCD}
 
-singularity: ## Donwload singularity .deb and .rpm
-	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/singularity-ce_3.10.2-focal_amd64.deb
-	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/singularity-ce-3.10.2-1.el7.x86_64.rpm
+SINGULARITY_DEB=singularity-ce_3.10.2-focal_amd64.deb
+SINGULARITY_RPM=singularity-ce-3.10.2-1.el7.x86_64.rpm
+
+${SINGULARITY_DEB}:
+	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/${SINGULARITY_DEB}
+
+${SINGULARITY_RPM}:
+	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/${SINGULARITY_RPM}
+
+singularity: ${SINGULARITY_DEB} ${SINGULARITY_RPM} ## Donwload singularity .deb and .rpm
 
 .PHONY: lxd-focal
 lxd-focal: ${ETCD} singularity ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
