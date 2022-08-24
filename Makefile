@@ -11,29 +11,40 @@ clean: ## Remove all deployed applications
 ${ETCD}: ## Download etcd resource
 	wget https://github.com/etcd-io/etcd/releases/download/v3.5.0/${ETCD}
 
+SINGULARITY_DEB=singularity-ce_3.10.2-focal_amd64.deb
+SINGULARITY_RPM=singularity-ce-3.10.2-1.el7.x86_64.rpm
+
+${SINGULARITY_DEB}:
+	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/${SINGULARITY_DEB}
+
+${SINGULARITY_RPM}:
+	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/${SINGULARITY_RPM}
+
+singularity: ${SINGULARITY_DEB} ${SINGULARITY_RPM} ## Donwload singularity .deb and .rpm
+
 .PHONY: lxd-focal
-lxd-focal: ${ETCD} ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
+lxd-focal: ${ETCD} singularity ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/lxd.yaml \
 	            --overlay ./slurm-core/series/focal.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: lxd-centos
-lxd-centos: ${ETCD} ## Deploy slurm-core in a local LXD CentOS7 cluster
+lxd-centos: ${ETCD} singularity ## Deploy slurm-core in a local LXD CentOS7 cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/lxd.yaml \
 	            --overlay ./slurm-core/series/centos7.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: aws-focal
-aws-focal: ${ETCD} ## Deploy slurm-core in a AWS Ubuntu Focal cluster
+aws-focal: ${ETCD} singularity ## Deploy slurm-core in a AWS Ubuntu Focal cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/aws.yaml \
 	            --overlay ./slurm-core/series/focal.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: aws-centos
-aws-centos: ${ETCD} ## Deploy slurm-core in a AWS CentOS7 cluster
+aws-centos: ${ETCD} singularity ## Deploy slurm-core in a AWS CentOS7 cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/aws.yaml \
 	            --overlay ./slurm-core/series/centos7.yaml \
