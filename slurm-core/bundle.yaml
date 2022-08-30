@@ -1,5 +1,5 @@
 name: slurm
-description: A suite of codified operations to asssemble, install, deploy, and operate Slurm.
+description: A suite of codified operations to assemble, install, deploy, and operate Slurm.
 website: https://omnivector-solutions.github.io/osd-documentation/master/
 docs: https://omnivector-solutions.github.io/osd-documentation/master/
 source: https://github.com/omnivector-solutions/slurm-bundles/
