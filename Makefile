@@ -1,5 +1,7 @@
 ETCD=etcd-v3.5.0-linux-amd64.tar.gz
 NHC=lbnl-nhc-1.4.3.tar.gz
+SINGULARITY_DEB=singularity-ce_3.10.2-focal_amd64.deb
+SINGULARITY_RPM=singularity-ce-3.10.2-1.el7.x86_64.rpm
 
 .PHONY: clean
 clean: ## Remove all deployed applications
@@ -15,40 +17,37 @@ ${ETCD}: ## Download etcd resource
 ${NHC}: ## Download NHC resource
 	wget https://github.com/mej/nhc/releases/download/1.4.3/${NHC}
 
-SINGULARITY_DEB=singularity-ce_3.10.2-focal_amd64.deb
-SINGULARITY_RPM=singularity-ce-3.10.2-1.el7.x86_64.rpm
-
 ${SINGULARITY_DEB}:
 	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/${SINGULARITY_DEB}
 
 ${SINGULARITY_RPM}:
 	wget https://github.com/sylabs/singularity/releases/download/v3.10.2/${SINGULARITY_RPM}
 
-singularity: ${SINGULARITY_DEB} ${SINGULARITY_RPM} ## Donwload singularity .deb and .rpm
+resources: ${ETCD} ${NHC} ${SINGULARITY_DEB} ${SINGULARITY_RPM} ## Download all resources
 
 .PHONY: lxd-focal
-lxd-focal: ${ETCD} singularity ${NHC} ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
+lxd-focal: resources ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/lxd.yaml \
 	            --overlay ./slurm-core/series/focal.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: lxd-centos
-lxd-centos: ${ETCD} singularity ${NHC} ## Deploy slurm-core in a local LXD CentOS7 cluster
+lxd-centos: resources ## Deploy slurm-core in a local LXD CentOS7 cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/lxd.yaml \
 	            --overlay ./slurm-core/series/centos7.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: aws-focal
-aws-focal: ${ETCD} singularity ${NHC} ## Deploy slurm-core in a AWS Ubuntu Focal cluster
+aws-focal: resources ## Deploy slurm-core in a AWS Ubuntu Focal cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/aws.yaml \
 	            --overlay ./slurm-core/series/focal.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: aws-centos
-aws-centos: ${ETCD} singularity ${NHC} ## Deploy slurm-core in a AWS CentOS7 cluster
+aws-centos: resources ## Deploy slurm-core in a AWS CentOS7 cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/aws.yaml \
 	            --overlay ./slurm-core/series/centos7.yaml \
