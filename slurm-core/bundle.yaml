@@ -20,12 +20,15 @@ applications:
   slurmrestd:
     charm: slurmrestd
     num_units: 1
-  percona-cluster:
-    charm: cs:percona-cluster-293
-    series: bionic
-    num_units: 1
+  mysql-router:
+    charm: mysql-router
+  mysql-cluster:
+    charm: mysql-innodb-cluster
+    series: jammy
+    num_units: 3
 relations:
-  - [slurmdbd:db, percona-cluster:db]
+  - [mysql-router:db-router, mysql-cluster:db-router]
+  - [mysql-router:shared-db, slurmdbd:shared-db]
   - [slurmctld:slurmdbd, slurmdbd:slurmdbd]
   - [slurmctld:slurmd, slurmd:slurmd]
   - [slurmctld:slurmrestd, slurmrestd:slurmrestd]
