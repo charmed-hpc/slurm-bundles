@@ -32,6 +32,13 @@ lxd-focal: resources ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
 	            --overlay ./slurm-core/series/focal.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
+.PHONY: lxd-jammy
+lxd-jammy: resources ## Deploy slurm-core in a local LXD CentOS7 cluster
+	juju deploy ./slurm-core/bundle.yaml \
+	            --overlay ./slurm-core/clouds/lxd.yaml \
+	            --overlay ./slurm-core/series/jammy.yaml \
+	            --overlay ./slurm-core/charms/local-development.yaml
+
 .PHONY: lxd-centos
 lxd-centos: resources ## Deploy slurm-core in a local LXD CentOS7 cluster
 	juju deploy ./slurm-core/bundle.yaml \
