@@ -1,16 +1,14 @@
 applications:
-  percona-cluster:
+  mysql:
     constraints: instance-type=t3a.small spaces=nat
     bindings:
       "": nat
-      access: nat
-      cluster: nat
-      db: nat
-      db-admin: nat
-      ha: nat
-      master: nat
+      cos-agent: nat
+      db-router: nat
+      mysql: nat
       shared-db: nat
-      slave: nat
+      certificates: nat
+      s3-parameters: nat
   slurmctld:
     constraints: instance-type=t3a.small spaces=nat
     bindings:

@@ -22,7 +22,7 @@ following components:
 - `slurmdbd` node: the database accounting node
 - `slurmd` node: the compute node
 - `slurmrestd` node: the REST API interface to Slurm
-- `percona-cluster` node: the MySQL database
+- `mysql` node: the MySQL database
 
 ## Documentation
 
