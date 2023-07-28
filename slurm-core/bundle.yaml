@@ -29,7 +29,11 @@ applications:
       mysql-interface-user: slurmdbd
 
 relations:
-  - [mysql:mysql, slurmdbd:db]
-  - [slurmctld:slurmdbd, slurmdbd:slurmdbd]
-  - [slurmctld:slurmd, slurmd:slurmd]
-  - [slurmctld:slurmrestd, slurmrestd:slurmrestd]
+- - mysql:mysql
+  - slurmdbd:db
+- - slurmctld:slurmdbd
+  - slurmdbd:slurmdbd
+- - slurmctld:slurmd
+  - slurmd:slurmd
+- - slurmctld:slurmrestd
+  - slurmrestd:slurmrestd
