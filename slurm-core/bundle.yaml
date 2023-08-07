@@ -5,7 +5,7 @@ docs: https://omnivector-solutions.github.io/osd-documentation/master/
 source: https://github.com/omnivector-solutions/slurm-bundles/
 issues: https://github.com/omnivector-solutions/slurm-charms/issues
 
-series: focal
+series: jammy
 
 applications:
   slurmctld:
@@ -20,12 +20,20 @@ applications:
   slurmrestd:
     charm: slurmrestd
     num_units: 1
-  percona-cluster:
-    charm: cs:percona-cluster-293
-    series: bionic
+  mysql:
+    charm: mysql
+    series: jammy
     num_units: 1
+    options:
+      mysql-interface-database: slurmdbd
+      mysql-interface-user: slurmdbd
+
 relations:
-  - [slurmdbd:db, percona-cluster:db]
-  - [slurmctld:slurmdbd, slurmdbd:slurmdbd]
-  - [slurmctld:slurmd, slurmd:slurmd]
-  - [slurmctld:slurmrestd, slurmrestd:slurmrestd]
+- - mysql:mysql
+  - slurmdbd:db
+- - slurmctld:slurmdbd
+  - slurmdbd:slurmdbd
+- - slurmctld:slurmd
+  - slurmd:slurmd
+- - slurmctld:slurmrestd
+  - slurmrestd:slurmrestd

@@ -1,9 +1,8 @@
 ETCD=etcd-v3.5.0-linux-amd64.tar.gz
-NHC=lbnl-nhc-1.4.3.tar.gz
 
 .PHONY: clean
 clean: ## Remove all deployed applications
-	juju remove-application --force percona-cluster \
+	juju remove-application --force mysql \
 	                                slurmctld \
 	                                slurmd \
 	                                slurmdbd \
@@ -12,16 +11,13 @@ clean: ## Remove all deployed applications
 ${ETCD}: ## Download etcd resource
 	wget https://github.com/etcd-io/etcd/releases/download/v3.5.0/${ETCD}
 
-${NHC}: ## Download NHC resource
-	wget https://github.com/mej/nhc/releases/download/1.4.3/${NHC}
+resources: ${ETCD} ## Download all resources
 
-resources: ${ETCD} ${NHC} ## Download all resources
-
-.PHONY: lxd-focal
-lxd-focal: resources ## Deploy slurm-core in a local LXD Ubuntu Focal cluster
+.PHONY: lxd-jammy
+lxd-jammy: resources ## Deploy slurm-core in a local LXD Ubuntu Jammy cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/lxd.yaml \
-	            --overlay ./slurm-core/series/focal.yaml \
+	            --overlay ./slurm-core/series/jammy.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: lxd-centos
@@ -31,11 +27,11 @@ lxd-centos: resources ## Deploy slurm-core in a local LXD CentOS7 cluster
 	            --overlay ./slurm-core/series/centos7.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
-.PHONY: aws-focal
-aws-focal: resources ## Deploy slurm-core in a AWS Ubuntu Focal cluster
+.PHONY: aws-jammy
+aws-jammy: resources ## Deploy slurm-core in a AWS Ubuntu Jammy cluster
 	juju deploy ./slurm-core/bundle.yaml \
 	            --overlay ./slurm-core/clouds/aws.yaml \
-	            --overlay ./slurm-core/series/focal.yaml \
+	            --overlay ./slurm-core/series/jammy.yaml \
 	            --overlay ./slurm-core/charms/local-development.yaml
 
 .PHONY: aws-centos
