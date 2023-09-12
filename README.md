@@ -5,9 +5,13 @@ and operate Slurm.
 
 ## Overview
 
-The [Slurm Charms](https://github.com/omnivector-solutions/slurm-charms/) are a
-custom curated suite of tools and automation that facilitate the lifecycle
-events and continuous operation of a Slurm cluster.
+The Slurm Charms are a custom curated suite of tools and automation that facilitate the lifecycle
+events and continuous operation of a Slurm cluster:
+
+- [Slurmd](https://github.com/omnivector-solutions/slurmd-operator)
+- [Slurmdbd](https://github.com/omnivector-solutions/slurmdbd-operator)
+- [Slurmctld](https://github.com/omnivector-solutions/slurmctld-operator)
+- [Slurmrestd](https://github.com/omnivector-solutions/slurmrestd-operator)
 
 Assuming you have Juju installed and bootstrapped, deploying a Slurm cluster
 involves running only a single command:
@@ -23,6 +27,7 @@ following components:
 - `slurmd` node: the compute node
 - `slurmrestd` node: the REST API interface to Slurm
 - `mysql` node: the MySQL database
+- `slurmdbd-mysql-router`: the MySQL router
 
 ## Documentation
 
