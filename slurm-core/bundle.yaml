@@ -1,9 +1,6 @@
 name: slurm
 description: A suite of codified operations to assemble, install, deploy, and operate Slurm.
-website: https://omnivector-solutions.github.io/osd-documentation/master/
-docs: https://omnivector-solutions.github.io/osd-documentation/master/
 source: https://github.com/omnivector-solutions/slurm-bundles/
-issues: https://github.com/omnivector-solutions/slurm-charms/issues
 
 series: jammy
 
@@ -20,20 +17,24 @@ applications:
   slurmrestd:
     charm: slurmrestd
     num_units: 1
-  mysql:
+  mysql:    
     charm: mysql
-    series: jammy
+    channel: 8.0/edge
     num_units: 1
-    options:
-      mysql-interface-database: slurmdbd
-      mysql-interface-user: slurmdbd
+    series: jammy
+  slurmdbd-mysql-router:
+    charm: mysql-router
+    channel: dpe/edge    
+    series: jammy
 
 relations:
-- - mysql:mysql
-  - slurmdbd:db
-- - slurmctld:slurmdbd
-  - slurmdbd:slurmdbd
 - - slurmctld:slurmd
   - slurmd:slurmd
+- - slurmdbd-mysql-router:backend-database
+  - mysql:database
+- - slurmdbd:database
+  - slurmdbd-mysql-router:database
+- - slurmctld:slurmdbd
+  - slurmdbd:slurmdbd
 - - slurmctld:slurmrestd
   - slurmrestd:slurmrestd

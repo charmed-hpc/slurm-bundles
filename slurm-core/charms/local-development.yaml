@@ -1,15 +1,15 @@
 applications:
   slurmctld:
-    charm: ./../../../slurm-charms/slurmctld.charm
+    charm: ./../../../slurmctld-operator/slurmctld.charm
     options:
       custom-config: |
         SlurmctldDebug=debug5
-        SlurmdDebug=debug5
-    resources:
-      etcd: ./../etcd-v3.5.0-linux-amd64.tar.gz
+        SlurmdDebug=debug5    
   slurmd:
-    charm: ./../../../slurm-charms/slurmd.charm
+    charm: ./../../../slurmd-operator/slurmd.charm    
+    resources:
+      nhc: ./../lbnl-nhc-1.4.3.tar.gz
   slurmdbd:
-    charm: ./../../../slurm-charms/slurmdbd.charm
+    charm: ./../../../slurmdbd-operator/slurmdbd.charm
   slurmrestd:
-    charm: ./../../../slurm-charms/slurmrestd.charm
+    charm: ./../../../slurmrestd-operator/slurmrestd.charm
